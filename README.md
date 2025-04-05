@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hello World Farcaster Mini App
 
-## Getting Started
+A simple Hello World mini app built with Next.js for the Farcaster ecosystem.
 
-First, run the development server:
+## Setup Steps
 
+1. **Create Next.js Project**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn create next-app hello-world-mini-app --typescript --tailwind --eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies**
+```bash
+cd hello-world-mini-app
+yarn add @farcaster/frame-sdk
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Configure App Layout** (`src/app/layout.tsx`)
+- Add Farcaster Frame meta tags
+- Configure app metadata
+- Set up frame button and actions
+- Define splash screen settings
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Create Main Page** (`src/app/page.tsx`)
+```typescript
+'use client';
 
-## Learn More
+import { useEffect } from 'react';
+import { sdk } from '@farcaster/frame-sdk';
 
-To learn more about Next.js, take a look at the following resources:
+export default function Home() {
+  useEffect(() => {
+    // Tell the client we're ready to show content
+    sdk.actions.ready();
+  }, []);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#855dcd]">
+      <h1 className="text-4xl font-bold text-white">Hello, World!</h1>
+    </div>
+  );
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Add Required Images**
+- Place images in `/public/images/`
+  - `hello-world.gif` - Main frame image
+  - `splash.png` - Splash screen image
 
-## Deploy on Vercel
+6. **Deploy to Vercel**
+- Deploy the app to get a public URL
+- Update all URLs in `layout.tsx` to use the deployed URL
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The mini app uses the following configuration in `layout.tsx`:
+- Frame Version: `next`
+- Background Color: `#855dcd`
+- Button Title: "👋 Say Hello"
+- Image URLs:
+  - Main Image: `/images/hello-world.gif`
+  - Splash Image: `/images/splash.png`
+
+## Development
+
+1. **Local Development**
+```bash
+yarn dev
+```
+
+2. **Testing with Warpcast**
+- Visit [Warpcast Mini App Debug Tool](https://warpcast.com/~/developers/mini-apps/debug)
+- Enter your app's URL
+- Test the frame functionality
+
+## Important Notes
+
+- The app must call `sdk.actions.ready()` to dismiss the splash screen
+- All image URLs must be absolute and publicly accessible
+- The frame image should maintain a 3:2 aspect ratio
+- Splash image should be 200x200px
