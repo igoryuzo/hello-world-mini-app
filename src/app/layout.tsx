@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   other: {
     'fc:frame': JSON.stringify({
       version: 'next',
-      imageUrl: 'https://hello-world-mini-app.vercel.app/images/hello-world.gif',
+      imageUrl: 'https://hello-world-mini-app.vercel.app/images/image_url.png',
       button: {
         title: '👋 Say Hello',
         action: {
           type: 'launch_frame',
           url: 'https://hello-world-mini-app.vercel.app',
           name: 'Hello World',
-          splashImageUrl: 'https://hello-world-mini-app.vercel.app/images/splash.png',
+          splashImageUrl: 'https://hello-world-mini-app.vercel.app/images/splash_image_url.png',
           splashBackgroundColor: '#855dcd'
         }
       }
