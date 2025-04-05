@@ -44,8 +44,8 @@ export default function Home() {
 
 5. **Add Required Images**
 - Place images in `/public/images/`
-  - `hello-world.gif` - Main frame image
-  - `splash.png` - Splash screen image
+  - `image_url.png` - Main frame image
+  - `splash_image_url.png` - Splash screen image
 
 6. **Deploy to Vercel**
 - Deploy the app to get a public URL
@@ -58,8 +58,8 @@ The mini app uses the following configuration in `layout.tsx`:
 - Background Color: `#855dcd`
 - Button Title: "👋 Say Hello"
 - Image URLs:
-  - Main Image: `/images/hello-world.gif`
-  - Splash Image: `/images/splash.png`
+  - Main Image: `/images/image_url.png`
+  - Splash Image: `/images/splash_image_url.png`
 
 ## Development
 
